@@ -16,7 +16,7 @@ function App() {
       setError("");
 
       const response = await axios.post(
-        "http://localhost:8080/api/v1/urls",
+      `${import.meta.env.VITE_API_URL}/api/v1/urls`,
         {
           originalUrl: url,
           expiresAt: expiresAt
@@ -40,7 +40,7 @@ function App() {
     if (!result) return;
 
     const response = await axios.get(
-      `http://localhost:8080/api/v1/urls/${result.shortCode}/analytics`
+      `${import.meta.env.VITE_API_URL}/api/v1/urls/${result.shortCode}/analytics`
     );
 
     setAnalytics(response.data);
